@@ -23,6 +23,12 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        foreach (glob(app_path().'/Helpers/*.php') as $filename){
+            require_once($filename);
+        }
         //
+        if($this->app->environment('prod')) {
+            \URL::forceScheme('https');
+        }
     }
 }
