@@ -2,7 +2,7 @@
 
 if (!function_exists('sitename')){
     function sitename(){
-        return ['site_title'=>'Auction System'];
+        return ['site_title'=>'Role Base System'];
     }
 }
 if (!function_exists('favicon')){

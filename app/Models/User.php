@@ -44,7 +44,9 @@ class User extends Authenticatable
     public function roles(){
         return $this->belongsToMany(Role::class,RoleAssig::class,'user_id','role_id');
     }
-
+    public function role(){
+        return $this->hasOne(RoleAssig::class,'user_id');
+    }
     public function hasAnyRole($roles){
         if(is_array($roles)){
 

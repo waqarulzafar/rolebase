@@ -53,8 +53,11 @@ class UserController extends Controller
         return redirect('admin/user');
     }
     public function fetchUser(){
-
-        $users=User::select('users.id','users.name','email','users.status','address','picture');
+//        $users=User::select('users.id','users.name','email','users.status','address','picture');
+//        $users=User::select('users.id','users.name','email','users.status','address','picture','roles.name as type')
+//            ->join('role_assigs','users.id','=','role_assigs.user_id')
+//            ->join('roles','roles.id','=','role_assigs.role_id');
+        $users = User::with('roles')->get();
 
         return DataTables::of($users)->addColumn('is_has_image',function($user){
             if(file_exists('uploads/'.$user->picture)){
@@ -72,8 +75,11 @@ class UserController extends Controller
         return response(['valid'=>true]);
     }
     public function editUser($id){
-        $user=User::find($id);
-        return view('admin.user.edit',compact('user'));
+//        $user=User::find($id);
+        $roles = Role::all();
+        $user = User::with('roles')->where('id','=',$id)->first();
+
+        return view('admin.user.edit',compact('user','roles'));
     }
     public function postEditUser(Request $request,$id){
         $user = User::find($id);
@@ -90,7 +96,6 @@ class UserController extends Controller
                 $user->roles()->detach();
                 $user->roles()->attach($role);
             }
-
             if ($request->hasFile('profile_avatar')) {
                 $uploadedFile = $request->file('profile_avatar');
                 $filename = time() . $uploadedFile->getClientOriginalName();

@@ -40,4 +40,10 @@ Route::group(['prefix'=>'admin'],function(){
         Route::post('/store-role',[\App\Http\Controllers\Admin\UserController::class,'storeRole']);
 
     });
-});
+
+    Route::group(['prefix'=>'department'],function(){
+        Route::get('/',[\App\Http\Controllers\Admin\DepartmentController::class,'index']);
+        Route::get('/fetch-department',[\App\Http\Controllers\Admin\DepartmentController::class,'fetchDepartment']);
+        Route::post('/store-department',[\App\Http\Controllers\Admin\DepartmentController::class,'storeDepartment']);
+    });
+    });

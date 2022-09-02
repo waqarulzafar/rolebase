@@ -21,13 +21,11 @@ class UserTableSeed extends Seeder
         $roleAdmin->status = 'active';
         $roleAdmin->save();
 
-
         $adminUser = new User();
         $adminUser->name = 'Admin';
         $adminUser->email = 'admin@gmail.com';
         $adminUser->password = bcrypt('123456');
         $adminUser->save();
-
 
         $adminUser->roles()->attach($roleAdmin);
     }

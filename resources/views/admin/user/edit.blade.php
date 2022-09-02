@@ -103,30 +103,14 @@
                                     <div class="form-group row">
                                         <div class="col-lg-6">
                                             <label>User Group:</label>
-                                            <div class="radio-inline">
-                                                <label class="radio radio-solid">
-                                                    <input type="radio" name="type"  {{ $user->hasRole('Admin')?'checked':'' }} value="Admin"/>
-                                                    <span></span>
-                                                    Admin
-                                                </label>
-
-                                            </div>
-                                            <div class="radio-inline">
-                                                <label class="radio radio-solid">
-                                                    <input type="radio" name="type" {{ $user->hasRole('Auctioner')?'checked':'' }} value="Auctioner"/>
-                                                    <span></span>
-                                                    Auctioner
-                                                </label>
-
-                                            </div>
-                                            <div class="radio-inline">
-                                                <label class="radio radio-solid">
-                                                    <input type="radio" name="type" {{ $user->hasRole('Buyer')?'checked':'' }} value="Buyer"/>
-                                                    <span></span>
-                                                    Buyer
-                                                </label>
-
-                                            </div>
+                                            @foreach($roles as $role)
+                                                <div class="radio-inline ml-5">
+                                                    <input class="form-check-input" type="checkbox" name="type[]" value="{{ $role->id }}" id="defaultCheck1">
+                                                    <label class="form-check-label" for="defaultCheck1">
+                                                        {{ $role->name  }}
+                                                    </label>
+                                                </div>
+                                            @endforeach
                                             <span class="form-text text-muted">Please select user group</span>
                                         </div>
                                     </div>
