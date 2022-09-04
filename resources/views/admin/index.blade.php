@@ -59,7 +59,7 @@
 													</svg>
                                                     <!--end::Svg Icon-->
 												</span>
-                                        <span class="card-title font-weight-bolder text-dark-75 font-size-h2 mb-0 mt-6 d-block total-users">0.00</span>
+                                        <span class="card-title font-weight-bolder text-dark-75 font-size-h2 mb-0 mt-6 d-block total-users">{{ $user }}</span>
                                         <span class="font-weight-bold text-muted font-size-sm">Total Users</span>
                                     </div>
                                     <!--end::Body-->
@@ -82,8 +82,8 @@
 													</svg>
                                                     <!--end::Svg Icon-->
 												</span>
-                                        <span class="card-title font-weight-bolder text-dark-75 font-size-h2 mb-0 mt-6 d-block new-bids">0.00</span>
-                                        <span class="font-weight-bold text-muted font-size-sm">New Bids</span>
+                                        <span class="card-title font-weight-bolder text-dark-75 font-size-h2 mb-0 mt-6 d-block new-bids">{{ $role }}</span>
+                                        <span class="font-weight-bold text-muted font-size-sm">Total Role</span>
                                     </div>
                                     <!--end::Body-->
                                 </div>
@@ -107,8 +107,8 @@
 													</svg>
                                                     <!--end::Svg Icon-->
 												</span>
-                                        <span class="card-title font-weight-bolder text-white font-size-h2 mb-0 mt-6 d-block total-bids">0.00</span>
-                                        <span class="font-weight-bold text-white font-size-sm">Total Bids</span>
+                                        <span class="card-title font-weight-bolder text-white font-size-h2 mb-0 mt-6 d-block total-bids">{{ $file }}</span>
+                                        <span class="font-weight-bold text-white font-size-sm">Total Files</span>
                                     </div>
                                     <!--end::Body-->
                                 </div>
@@ -130,8 +130,8 @@
 													</svg>
                                                     <!--end::Svg Icon-->
 												</span>
-                                        <span class="card-title font-weight-bolder text-white font-size-h2 mb-0 mt-6 text-hover-primary d-block total-auctions">0.00</span>
-                                        <span class="font-weight-bold text-white font-size-sm">Total Auctions</span>
+                                        <span class="card-title font-weight-bolder text-white font-size-h2 mb-0 mt-6 text-hover-primary d-block total-auctions">{{ $depart }}</span>
+                                        <span class="font-weight-bold text-white font-size-sm">Total Department</span>
                                     </div>
                                     <!--end::Body-->
                                 </div>
@@ -144,39 +144,7 @@
             </div>
             <!--end::Container-->
         </div>
-        <div class="d-flex mt-2 flex-column-fluid">
-            <!--begin::Container-->
-            <div class="container">
-                <!--begin::Card-->
-                <div class="card card-custom">
-                    <div class="card-body">
-                        <div style="text-align: right" id="dtButtons"></div>
-                        <!--begin: Datatable-->
-                        <table class="table table-separate table-head-custom table-foot-custom table-checkable" id="kt_datatable" style="margin-top: 13px !important">
-                            <thead>
-                            <tr>
-                                <th>ID</th>
-                                <th>Order #</th>
-                                <th>Promo Code</th>
-                                <th>Government</th>
-                                <th>Area</th>
-                                <th>Payment Type</th>
-                                <th>Delivery Charges</th>
-                                <th>Subtotal</th>
-                                <th>Promo Discount</th>
-                                <th>Total</th>
-                                <th>Status</th>
-                                <th>Action</th>
-                            </tr>
-                            </thead>
-                        </table>
-                        <!--end: Datatable-->
-                    </div>
-                </div>
-                <!--end::Card-->
-            </div>
-            <!--end::Container-->
-        </div>
+
         <!--end::Entry-->
     </div>
     <!--end::Content-->
@@ -194,20 +162,20 @@
     <script src="{{ url('/assets/js/select2custom.js') }}"></script>
     <script src="{{ asset('adminside/orders/order.js') }}"></script>
 
-    <script>
-        $(document).ready(function(e){
-            $.ajax({
-                url:HOST_URL+'/admin/getstatics',
-                type:'get',
-                success:function (data) {
-                    console.log(data);
-                    $('.total-users').html(data.total_users);
-                    $('.total-bids').html(data.total_bids);
-                    $('.new-bids').html(data.new_bids);
-                    $('.total-auctions').html(data.total_auctions);
+{{--    <script>--}}
+{{--        $(document).ready(function(e){--}}
+{{--            $.ajax({--}}
+{{--                url:HOST_URL+'/admin/getstatics',--}}
+{{--                type:'get',--}}
+{{--                success:function (data) {--}}
+{{--                    console.log(data);--}}
+{{--                    $('.total-users').html(data.total_users);--}}
+{{--                    $('.total-bids').html(data.total_bids);--}}
+{{--                    $('.new-bids').html(data.new_bids);--}}
+{{--                    $('.total-auctions').html(data.total_auctions);--}}
 
-                }
-            })
-        });
-    </script>
+{{--                }--}}
+{{--            })--}}
+{{--        });--}}
+{{--    </script>--}}
 @endsection
