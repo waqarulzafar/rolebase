@@ -105,8 +105,8 @@
                                             <label>User Group:</label>
                                             @foreach($roles as $role)
                                                 <div class="radio-inline ml-5">
-                                                    <input class="form-check-input" type="checkbox" name="type[]" value="{{ $role->id }}" id="defaultCheck1">
-                                                    <label class="form-check-label" for="defaultCheck1">
+                                                    <input class="form-check-input" {{ checkrole($role->id,$user->id)?'checked':'' }} type="checkbox" name="type[]" value="{{ $role->id }}" >
+                                                    <label class="form-check-label">
                                                         {{ $role->name  }}
                                                     </label>
                                                 </div>

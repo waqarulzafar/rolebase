@@ -78,7 +78,8 @@ class UserController extends Controller
 //        $user=User::find($id);
         $roles = Role::all();
         $user = User::with('roles')->where('id','=',$id)->first();
-
+//        $rol = explode(',', $user->roles);
+//
         return view('admin.user.edit',compact('user','roles'));
     }
     public function postEditUser(Request $request,$id){
@@ -87,15 +88,17 @@ class UserController extends Controller
             $user->name = $request->name;
             $user->email = $request->email;
             $user->password = bcrypt($request->password);
-            $user->picture = '/metronic/theme/html/demo10/dist/assets/media/svg/avatars/007-boy-2.svg';
+//            $user->picture = '/metronic/theme/html/demo10/dist/assets/media/svg/avatars/007-boy-2.svg';
             $user->phone = $request->phone;
             $user->address = $request->address;
-            $user->save();
-            $role = Role::where('name', $request->type)->first();
-            if ($role) {
-                $user->roles()->detach();
-                $user->roles()->attach($role);
-            }
+            $user->update();
+            $user->roles()->sync($request->type);
+//            $role = Role::where('id', $request->type[])->first();
+//            if ($role) {
+////                $user->roles()->detach();
+////                $user->roles()->attach($role);
+//            $user->roles()->sync($request->types);
+//            }
             if ($request->hasFile('profile_avatar')) {
                 $uploadedFile = $request->file('profile_avatar');
                 $filename = time() . $uploadedFile->getClientOriginalName();

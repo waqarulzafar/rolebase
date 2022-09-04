@@ -46,4 +46,9 @@ Route::group(['prefix'=>'admin'],function(){
         Route::get('/fetch-department',[\App\Http\Controllers\Admin\DepartmentController::class,'fetchDepartment']);
         Route::post('/store-department',[\App\Http\Controllers\Admin\DepartmentController::class,'storeDepartment']);
     });
+    Route::group(['prefix'=>'file'],function(){
+        Route::get('/',[\App\Http\Controllers\Admin\FileController::class,'index']);
+        Route::get('/fetch-files',[\App\Http\Controllers\Admin\FileController::class,'fetchFiles']);
+        Route::post('/store-file',[\App\Http\Controllers\Admin\FileController::class,'storeFile']);
+    });
     });

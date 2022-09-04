@@ -106,17 +106,17 @@ var KTDatatablesAdvancedColumnRendering = function() {
                 {data: 'email'},
                 {data: 'address'},
                 {data: 'status'},
-                {
-                    data: "roles",
-                    render: function ( file_id ) {
-                        // for (let i = 0;i<=file_id.length;i++){
-                        //      file_id[i].name
-                        // }
-                        return toString(file_id)
-                        // console.log(file_id)
-                    },
-                    title: "roles"
-                },
+                // {
+                //     data: "roles",
+                //     render: function ( file_id ) {
+                //         // for (let i = 0;i<=file_id.length;i++){
+                //         //      file_id[i].name
+                //         // }
+                //         return toString(file_id)
+                //         // console.log(file_id)
+                //     },
+                //     title: "roles"
+                // },
                 // {data: 'type','name':'roles.name'},
             ],
         });

@@ -3,7 +3,6 @@
 @section('css')
     <link href="{{ asset('assets/plugins/custom/datatables/datatables.bundle.css?v=7.0.5') }}" rel="stylesheet" type="text/css" />
     <link href="{{ url('assets/editor/css/editor.bootstrap4.css') }}" rel="stylesheet" type="text/css">
-
 @endsection
 
 @section('content')
@@ -16,18 +15,19 @@
                     <!--begin::Page Heading-->
                     <div class="d-flex align-items-baseline flex-wrap mr-5">
                         <!--begin::Page Title-->
-                        <h5 class="text-dark font-weight-bold my-1 mr-5">Users</h5>
+
+                        <h5 class="text-dark font-weight-bold my-1 mr-5">Users Roles</h5>
                         <!--end::Page Title-->
                         <!--begin::Breadcrumb-->
                         <ul class="breadcrumb breadcrumb-transparent breadcrumb-dot font-weight-bold p-0 my-2 font-size-sm">
                             <li class="breadcrumb-item">
-                                <a href="" class="text-muted">admin</a>
+                                <a href="" class="text-muted">Admin</a>
                             </li>
                             <li class="breadcrumb-item">
-                                <a href="" class="text-muted">User</a>
+                                <a href="" class="text-muted">Users</a>
                             </li>
                             <li class="breadcrumb-item">
-                                <a href="" class="text-muted">All</a>
+                                <a href="" class="text-muted">Roles</a>
                             </li>
 
                         </ul>
@@ -49,22 +49,21 @@
                 <!--begin::Card-->
                 <div class="card card-custom">
                     <div class="card-body">
-                        <div style="text-align: right" id="dtButtons"></div>
+
+
+                        <div style="text-align: right;" class="btn-group" id="dtButtons" role="group" aria-label="Button group with nested dropdown">
+                        </div>
+
                         <!--begin: Datatable-->
                         <table class="table table-separate table-head-custom table-foot-custom table-checkable" id="kt_datatable" style="margin-top: 13px !important">
                             <thead>
                             <tr>
-                                <th>Record ID</th>
+                                <th>ID</th>
                                 <th>Name</th>
-                                <th>Email</th>
-                                <th>Address</th>
-                                <th>Status</th>
-{{--                                <th>Role</th>--}}
-
-
+                                <th>Description</th>
+                                <th>Image</th>
                             </tr>
                             </thead>
-                            <tbody></tbody>
                         </table>
                         <!--end: Datatable-->
                     </div>
@@ -78,12 +77,8 @@
 @endsection
 
 @section('js')
-    <script src="https://cdn.jsdelivr.net/npm/[email protected]/dist/js/select2.min.js"></script>
     <script src="{{ asset('assets/plugins/custom/datatables/datatables.bundle.js?v=7.0.5') }}"></script>
     <script src="{{ url('/assets/editor/js/dataTables.editor.js') }}" type="text/javascript"></script>
-
     <script src="{{ url('/assets/editor/js/editor.bootstrap4.js') }}" type="text/javascript"></script>
-    <script src="{{ url('assets/js/select2custom.js') }}"></script>
-
-    <script src="{{ asset('js/user/users.js') }}"></script>
+    <script src="{{ asset('js/file/file.js') }}"></script>
 @endsection
