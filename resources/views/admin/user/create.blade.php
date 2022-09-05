@@ -97,6 +97,18 @@
                                             </div>
                                             <span class="form-text text-muted">Please enter your address</span>
                                         </div>
+                                        <div class="col-lg-6">
+                                            <label>Department:</label>
+                                            <div class="input-group">
+                                              <select name="department_id" class="form-control">
+                                                  @foreach(\App\Models\Department::all() as $department)
+                                                  <option value="{{ $department->id }}">{{$department->name}}</option>
+                                                  @endforeach
+                                              </select>
+                                                <div class="input-group-append"><span class="input-group-text"><i class="la la-map-marker"></i></span></div>
+                                            </div>
+                                            <span class="form-text text-muted">Department</span>
+                                        </div>
                                     </div>
                                     <div class="form-group row">
                                         <div class="col-lg-6">

@@ -29,6 +29,7 @@ class UserController extends Controller
         $user->picture='/metronic/theme/html/demo10/dist/assets/media/svg/avatars/007-boy-2.svg';
         $user->phone=$request->phone;
         $user->address=$request->address;
+        $user->department_id=$request->department_id;
         $user->save();
         foreach ($request->type as $role){
             $data = new RoleAssig();
@@ -91,6 +92,7 @@ class UserController extends Controller
 //            $user->picture = '/metronic/theme/html/demo10/dist/assets/media/svg/avatars/007-boy-2.svg';
             $user->phone = $request->phone;
             $user->address = $request->address;
+            $user->department_id=$request->department_id;
             $user->update();
             $user->roles()->sync($request->type);
 //            $role = Role::where('id', $request->type[])->first();

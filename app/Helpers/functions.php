@@ -28,4 +28,22 @@ if (!function_exists('checkrole')){
      return false;
  }
 }
+if (!function_exists('file_type')){
+    function file_type($file){
+        $extention=\Illuminate\Support\Facades\File::extension($file);
+//        dump($extention);
+        if ($extention=='pdf'){
+            return url('icons/pdf.png');
+        }elseif ($extention=='jpg' || $extention=='png'){
+            return url('/icons/image.png');
+        }elseif ($extention=='docx' || $extention=='doc'){
+            return url('/icons/word.png');
+        }elseif ($extention=='mp4'){
+            return url('icons/video.png');
+        }else {
+            return url('/icons/other.png');
+        }
+    }
+}
+
 ?>

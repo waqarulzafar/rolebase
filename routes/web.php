@@ -15,11 +15,13 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+  return redirect('login');
 });
 
 Auth::routes();
-
+Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth']], function () {
+    \UniSharp\LaravelFilemanager\Lfm::routes();
+});
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('newuseremail',[\App\Http\Controllers\Admin\UserController::class,'checkEmail']);
 
@@ -46,9 +48,15 @@ Route::group(['prefix'=>'admin'],function(){
         Route::get('/fetch-department',[\App\Http\Controllers\Admin\DepartmentController::class,'fetchDepartment']);
         Route::post('/store-department',[\App\Http\Controllers\Admin\DepartmentController::class,'storeDepartment']);
     });
+
+    Route::group(['prefix'=>'employee'],function(){
+       Route::get('files',[\App\Http\Controllers\EmployeeController::class,'files']);
+       Route::get('file/{id}',[\App\Http\Controllers\EmployeeController::class,'viewFile']);
+    });
     Route::group(['prefix'=>'file'],function(){
         Route::get('/',[\App\Http\Controllers\Admin\FileController::class,'index']);
         Route::get('/fetch-files',[\App\Http\Controllers\Admin\FileController::class,'fetchFiles']);
         Route::post('/store-file',[\App\Http\Controllers\Admin\FileController::class,'storeFile']);
     });
     });
+
