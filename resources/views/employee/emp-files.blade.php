@@ -253,7 +253,7 @@
                                     <div class="symbol symbol-circle symbol-lg-90">
                                         <a href="#">
                                         <img src="{{ file_type($file->file)}}"
-                                             alt="image">
+                                             alt="image" style="width: 100px;">
                                         </a>
 
                                     </div>
@@ -265,8 +265,10 @@
                                 </div>
                                 <div class="mt-9">
                                     <a href="{{ url('admin/employee/file/'.$file->id) }}"
-                                       class="btn btn-light-primary font-weight-bolder btn-sm py-3 px-6 text-uppercase">view
+                                       class="btn btn-light-primary font-weight-bolder btn-sm py-3 px-6 text-uppercase">View
                                         File</a>
+                                    <a href="{{ url('admin/employee/file/download/'.$file->id) }}"
+                                       class="btn btn-light-primary font-weight-bolder btn-sm py-3 px-6 text-uppercase">Download</a>
                                 </div>
                                 <!--end::Buttons-->
                             </div>

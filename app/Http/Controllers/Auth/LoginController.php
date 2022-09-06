@@ -47,6 +47,8 @@ class LoginController extends Controller
 
         if ($user->hasRole('Admin')){
             return redirect('/admin');
+        }else{
+            return redirect('/admin/employee/files');
         }
     }
 }

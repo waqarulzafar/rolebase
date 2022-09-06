@@ -16,15 +16,6 @@ var KTDatatablesDataSourceAjaxServer = function() {
             fields: [
                 {label: "Name:", name: "name"},
                 {label: "Description:", name: "desc"},
-                {
-                    label: "status",
-                    name:"status",
-                    type:  "select",
-                    options: [
-                        { label: "Active", value: 'active' },
-                        { label: "Inactive",  value: 'inactive' }
-                    ],
-                }
             ]
         });
         $('#kt_datatable').on('click', 'tbody td:not(:first-child)', function (e) {

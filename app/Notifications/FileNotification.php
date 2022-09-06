@@ -12,18 +12,20 @@ class FileNotification extends Notification
     use Queueable;
     public $message="";
     public $fileUrl="";
+    public $user=null;
 
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct($message,$fileUrl)
+    public function __construct($message,$fileUrl,$user=null)
     {
         //
 
         $this->message=$message;
         $this->fileUrl=$fileUrl;
+        $this->user=$user;
     }
 
     /**
@@ -34,7 +36,7 @@ class FileNotification extends Notification
      */
     public function via($notifiable)
     {
-        return ['mail'];
+        return ['mail','database'];
     }
 
     /**
@@ -60,7 +62,9 @@ class FileNotification extends Notification
     public function toArray($notifiable)
     {
         return [
-            //
+            'url'=>$this->fileUrl,
+            'user'=>$this->user,
+            'message'=>$this->message,
         ];
     }
 }

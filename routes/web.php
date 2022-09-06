@@ -52,6 +52,7 @@ Route::group(['prefix'=>'admin'],function(){
     Route::group(['prefix'=>'employee'],function(){
        Route::get('files',[\App\Http\Controllers\EmployeeController::class,'files']);
        Route::get('file/{id}',[\App\Http\Controllers\EmployeeController::class,'viewFile']);
+       Route::get('file/download/{id}',[\App\Http\Controllers\EmployeeController::class,'download']);
     });
     Route::group(['prefix'=>'file'],function(){
         Route::get('/',[\App\Http\Controllers\Admin\FileController::class,'index']);

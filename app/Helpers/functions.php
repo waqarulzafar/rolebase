@@ -63,5 +63,15 @@ if (!function_exists('check_select')){
         return "";
     }
 }
+if (!function_exists('user_notification')){
+    function user_notification()
+    {
+        if (auth()->user()) {
+            return auth()->user()->unreadNotifications;
+        }else{
+            return [];
+        }
+        }
+    }
 
 ?>

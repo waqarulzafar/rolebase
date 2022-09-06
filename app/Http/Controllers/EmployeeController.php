@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\FileAssign;
 use App\Models\FileManage;
 
 use App\Models\User;
@@ -24,16 +25,56 @@ class EmployeeController extends Controller
     public function viewFile($id){
 
         $file=FileManage::find($id);
+        $user=User::whereHas('role',function ($q){
+            $q->where('name','Admin');
+        })->get();
+        $fileUrl=url(Storage::url($file->file));
+        Notification::send($user,new FileNotification(Auth::user()->name .' has  viewed or downloaded the file.',$fileUrl,Auth::user()));
+
+        $permissions=FileAssign::where('role_id',Auth::user()->role->id)->where('file_id',$file->id)->get()->last();
+
+        if ($permissions){
+            if ($permissions->access_type=='view'|| $permissions->access_type=='both'){
+
+                if ($file){
+
+
+                    return response()->file('storage/'.$file->file);
+                }
+            }else{
+                abort(403);
+            }
+        }else{
+            abort(403);
+        }
+
+        return "Access Denied";
+    }
+    public function download($id,Request $request){
+        $file=FileManage::find($id);
+
 
         $user=User::whereHas('role',function ($q){
             $q->where('name','Admin');
         })->get();
+        $fileUrl=url(Storage::url($file->file));
+        Notification::send($user,new FileNotification(Auth::user()->name .' has  viewed or downloaded the file.',$fileUrl,Auth::user()));
 
-        if ($file){
-            $fileUrl=url(Storage::url($file->file));
-            Notification::send($user,new FileNotification(Auth::user()->name .' has  viewed or downloaded the file.',$fileUrl));
+        $permissions=FileAssign::where('role_id',Auth::user()->role->id)->where('file_id',$file->id)->get()->last();
 
-            return response()->file('storage/'.$file->file);
+        if ($permissions){
+            if ($permissions->access_type=='download'|| $permissions->access_type=='both'){
+
+                if ($file){
+
+
+                    return response()->file('storage/'.$file->file);
+                }
+            }else{
+                abort(403);
+            }
+        }else{
+            abort(403);
         }
     }
 }
