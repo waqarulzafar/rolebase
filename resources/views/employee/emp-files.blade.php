@@ -251,8 +251,11 @@
                                 <!--begin::User-->
                                 <div class="mt-7">
                                     <div class="symbol symbol-circle symbol-lg-90">
+                                        <a href="#">
                                         <img src="{{ file_type($file->file)}}"
                                              alt="image">
+                                        </a>
+
                                     </div>
                                 </div>
                                 <!--end::User-->

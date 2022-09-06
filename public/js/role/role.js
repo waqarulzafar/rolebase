@@ -46,6 +46,19 @@ var KTDatatablesDataSourceAjaxServer = function() {
                 url: HOST_URL + '/admin/user/fetch-role',
                 type: 'GET',
             },
+            columnDefs: [
+                {
+                    targets: -1,
+                    title: 'Actions',
+                    orderable: false,
+                    render: function(data, type, full, meta) {
+                        return '\<a href="'+HOST_URL+'/admin/file/file-assign/'+full.id+'" class="btn btn-md btn-clean " title="File Assign">\
+								File Assign\
+							</a>\
+						';
+                    },
+                },
+            ],
             "select": {
                 'style': 'multi'
             },
@@ -54,6 +67,8 @@ var KTDatatablesDataSourceAjaxServer = function() {
                 {data: 'name'},
                 {data: 'desc'},
                 {data: 'status'},
+                {data: 'status'},
+
             ],
             buttons: [
                 { extend: "create", editor: tableEditor ,className:'btn btn-outline-success font-weight-bold'},

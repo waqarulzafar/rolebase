@@ -45,5 +45,23 @@ if (!function_exists('file_type')){
         }
     }
 }
+if (!function_exists('check_role')){
+    function check_role($roleid,$file_id){
+        $check=\App\Models\FileAssign::where('role_id',$roleid)->where('file_id',$file_id)->get()->last();
+        if ($check){
+            return 'checked';
+        }
+        return "";
+    }
+}
+if (!function_exists('check_select')){
+    function check_select($roleid,$file_id){
+        $check=\App\Models\FileAssign::where('role_id',$roleid)->where('file_id',$file_id)->get()->last();
+        if ($check){
+            return 'selected';
+        }
+        return "";
+    }
+}
 
 ?>

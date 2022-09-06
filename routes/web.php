@@ -57,6 +57,10 @@ Route::group(['prefix'=>'admin'],function(){
         Route::get('/',[\App\Http\Controllers\Admin\FileController::class,'index']);
         Route::get('/fetch-files',[\App\Http\Controllers\Admin\FileController::class,'fetchFiles']);
         Route::post('/store-file',[\App\Http\Controllers\Admin\FileController::class,'storeFile']);
+        Route::get('/file-assign/{id}',[\App\Http\Controllers\Admin\FileController::class,'fileAssign']);
+        Route::post('/post-file-assign',[\App\Http\Controllers\Admin\FileController::class,'postFileAssign']);
+
     });
-    });
+
+});
 
