@@ -13,4 +13,7 @@ class FileManage extends Model
     public function fileAssign(){
         return $this->belongsToMany(Role::class,FileAssign::class,'role_id','file_id');
     }
+    public function department(){
+        return $this->belongsTo(Department::class,'department_id');
+    }
 }

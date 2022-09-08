@@ -71,4 +71,10 @@ class User extends Authenticatable
         }
         return false;
     }
+    public function getPictureAttribute($value){
+        if ($value){
+            return url('uploads/'.$value);
+        }
+        return url('assets/media/users/300_21.jpg');
+    }
 }

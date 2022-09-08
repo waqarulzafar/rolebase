@@ -18,7 +18,7 @@ class EmployeeController extends Controller
         $files=FileManage::
         when($request->q!='',function($q){
             return $q->where('name','like','%'.\request('q').'%');
-        })->paginate(20);
+        })->where('department_id',Auth::user()->department_id)->paginate(20);
 
         return view('employee.emp-files',compact('files'));
     }

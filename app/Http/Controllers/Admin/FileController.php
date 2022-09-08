@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\DataTables\FileManageDataTableEditor;
 use App\Http\Controllers\Controller;
+use App\Models\Department;
 use App\Models\FileAssign;
 use App\Models\FileManage;
 use App\Models\Role;
@@ -14,11 +15,19 @@ use Yajra\DataTables\Facades\DataTables;
 class FileController extends Controller
 {
     public function index(){
-        return view('admin.file.index');
+        $deparments=Department::select('id as value','name as label')->get();
+        return view('admin.file.index',compact('deparments'));
     }
     public function fetchFiles(){
-        $role=FileManage::select('id','name','desc','file');
-        return DataTables::of($role)->make(true);
+        $role=FileManage::select('id','name','desc','file','department_id')->with('department');
+        return DataTables::of($role)
+            ->editColumn('department_id',function($item){
+                if ($item->department){
+                    return $item->department->name;
+                }else{
+                    return "";
+                }
+            })->make(true);
     }
     public function storeFile(FileManageDataTableEditor $editor){
         return $editor->process(\request());

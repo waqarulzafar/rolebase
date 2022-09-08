@@ -14,6 +14,11 @@ var KTDatatablesDataSourceAjaxServer = function() {
             idSrc:'id',
             keys:true,
             fields: [
+                {label: "Department:",
+                type:'select',
+                options:deparments,
+                    name: "department_id"
+                },
                 {label: "Name:", name: "name"},
                 {label: "Description:", name: "desc"},
                 {
@@ -54,6 +59,7 @@ var KTDatatablesDataSourceAjaxServer = function() {
             columns: [
                 {data: 'id'},
                 {data: 'name'},
+                {data: 'department_id','field':'department_id'},
                 {data: 'desc'},
                 {
                     data: "file",

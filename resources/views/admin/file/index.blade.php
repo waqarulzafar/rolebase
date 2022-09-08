@@ -60,6 +60,7 @@
                             <tr>
                                 <th>ID</th>
                                 <th>Name</th>
+                                <th>Department</th>
                                 <th>Description</th>
                                 <th>Image</th>
                             </tr>
@@ -77,6 +78,9 @@
 @endsection
 
 @section('js')
+    <script>
+    var deparments={!! json_encode($deparments) !!}
+    </script>
     <script src="{{ asset('assets/plugins/custom/datatables/datatables.bundle.js?v=7.0.5') }}"></script>
     <script src="{{ url('/assets/editor/js/dataTables.editor.js') }}" type="text/javascript"></script>
     <script src="{{ url('/assets/editor/js/editor.bootstrap4.js') }}" type="text/javascript"></script>
