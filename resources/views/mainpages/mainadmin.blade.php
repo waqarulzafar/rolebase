@@ -105,7 +105,7 @@
             <!--begin::Brand-->
             <div class="brand flex-column-auto" id="kt_brand">
                 <!--begin::Logo-->
-                <a href="{{ url('admin/dashboard') }}" class="brand-logo">
+                <a href="{{ url('admin') }}" class="brand-logo">
                     <img alt="Logo" src="{{ asset('assets/image/logos.png') }}" />
                 </a>
                 <!--end::Logo-->
@@ -134,7 +134,7 @@
                     <ul class="menu-nav">
                         @if(\Illuminate\Support\Facades\Auth::user()->hasRole('admin'))
                         <li class="menu-item menu-item-active" aria-haspopup="true">
-                            <a href="{{ url('admin/dashboard') }}" class="menu-link">
+                            <a href="{{ url('admin') }}" class="menu-link">
 										<span class="svg-icon menu-icon">
 											<!--begin::Svg Icon | path:assets/media/svg/icons/Design/Layers.svg-->
 											<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
