@@ -16,7 +16,7 @@
                     <div class="d-flex align-items-baseline flex-wrap mr-5">
                         <!--begin::Page Title-->
 
-                        <h5 class="text-dark font-weight-bold my-1 mr-5">New User</h5>
+                        <h5 class="text-dark font-weight-bold my-1 mr-5">Assign File To Role</h5>
                         <!--end::Page Title-->
                         <!--begin::Breadcrumb-->
                         <ul class="breadcrumb breadcrumb-transparent breadcrumb-dot font-weight-bold p-0 my-2 font-size-sm">
@@ -88,9 +88,9 @@
                                                             <td>{{ $file->name }}</td>
                                                             <td><img src="{{ file_type($file->file)}}" height="90px" width="90px"></td>
                                                             <td><select class="form-control" name="dt[{{$key}}][access_type]">
-                                                                    <option {{ check_select($role->id,$file->id) }} value="view">View</option>
-                                                                    <option {{ check_select($role->id,$file->id) }} value="download">Download</option>
-                                                                    <option {{ check_select($role->id,$file->id) }} value="both">Both</option>
+                                                                    <option {{ check_select($role->id,$file->id,'view') }} value="view">View</option>
+                                                                    <option {{ check_select($role->id,$file->id,'download') }} value="download">Download</option>
+                                                                    <option {{ check_select($role->id,$file->id,'both') }} value="both">Both</option>
                                                                 </select></td>
                                                         </tr>
                                                     @endforeach

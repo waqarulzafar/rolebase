@@ -55,8 +55,10 @@ if (!function_exists('check_role')){
     }
 }
 if (!function_exists('check_select')){
-    function check_select($roleid,$file_id){
-        $check=\App\Models\FileAssign::where('role_id',$roleid)->where('file_id',$file_id)->get()->last();
+    function check_select($roleid,$file_id,$type='view'){
+        $check=\App\Models\FileAssign::where('role_id',$roleid)
+            ->where('file_id',$file_id)
+           ->where('access_type',$type)->get()->last();
         if ($check){
             return 'selected';
         }
