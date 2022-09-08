@@ -30,8 +30,8 @@ class EmployeeController extends Controller
         })->get();
         $fileUrl=url(Storage::url($file->file));
         Notification::send($user,new FileNotification(Auth::user()->name .' has  viewed or downloaded the file.',$fileUrl,Auth::user()));
-
-        $permissions=FileAssign::where('role_id',Auth::user()->role->id)->where('file_id',$file->id)->get()->last();
+        $role=Auth::user()->roles()->first();
+        $permissions=FileAssign::where('role_id',$role->id)->where('file_id',$file->id)->get()->last();
 
         if ($permissions){
             if ($permissions->access_type=='view'|| $permissions->access_type=='both'){
@@ -60,7 +60,8 @@ class EmployeeController extends Controller
         $fileUrl=url(Storage::url($file->file));
         Notification::send($user,new FileNotification(Auth::user()->name .' has  viewed or downloaded the file.',$fileUrl,Auth::user()));
 
-        $permissions=FileAssign::where('role_id',Auth::user()->role->id)->where('file_id',$file->id)->get()->last();
+        $role=Auth::user()->roles()->first();
+        $permissions=FileAssign::where('role_id',$role->id)->where('file_id',$file->id)->get()->last();
 
         if ($permissions){
             if ($permissions->access_type=='download'|| $permissions->access_type=='both'){
