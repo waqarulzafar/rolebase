@@ -10,16 +10,21 @@ use App\Models\Role;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class AdminController extends Controller
 {
     //
 
     public function dashboard(Request $request){
-        $user = User::all()->count();
-        $role = Role::all()->count();
-        $file = FileManage::all()->count();
-        $depart = Department::all()->count();
-        return view('admin.index',compact('user','role','file','depart'));
+        if (Auth::user()->hasRole('Admin')) {
+            $user = User::all()->count();
+            $role = Role::all()->count();
+            $file = FileManage::all()->count();
+            $depart = Department::all()->count();
+            return view('admin.index', compact('user', 'role', 'file', 'depart'));
+        }else{
+            return redirect('/admin/employee/files');
+        }
     }
 }
