@@ -25,11 +25,7 @@ class EmployeeController extends Controller
     public function viewFile($id){
 
         $file=FileManage::find($id);
-        $user=User::whereHas('role',function ($q){
-            $q->where('name','Admin');
-        })->get();
-        $fileUrl=url(Storage::url($file->file));
-        Notification::send($user,new FileNotification(Auth::user()->name .' has  viewed or downloaded the file.',$fileUrl,Auth::user()));
+
         $role=Auth::user()->roles()->first();
         $permissions=FileAssign::where('role_id',$role->id)->where('file_id',$file->id)->get()->last();
 
@@ -42,9 +38,21 @@ class EmployeeController extends Controller
                     return response()->file('storage/'.$file->file);
                 }
             }else{
+                $user=User::whereHas('role',function ($q){
+                    $q->where('name','Admin');
+                })->get();
+                $fileUrl=url(Storage::url($file->file));
+                Notification::send($user,new FileNotification(Auth::user()->name .' has  viewed or downloaded the file.',$fileUrl,Auth::user()));
+
                 abort(403);
             }
         }else{
+            $user=User::whereHas('role',function ($q){
+                $q->where('name','Admin');
+            })->get();
+            $fileUrl=url(Storage::url($file->file));
+            Notification::send($user,new FileNotification(Auth::user()->name .' has  viewed or downloaded the file.',$fileUrl,Auth::user()));
+
             abort(403);
         }
 
@@ -54,11 +62,6 @@ class EmployeeController extends Controller
         $file=FileManage::find($id);
 
 
-        $user=User::whereHas('role',function ($q){
-            $q->where('name','Admin');
-        })->get();
-        $fileUrl=url(Storage::url($file->file));
-        Notification::send($user,new FileNotification(Auth::user()->name .' has  viewed or downloaded the file.',$fileUrl,Auth::user()));
 
         $role=Auth::user()->roles()->first();
         $permissions=FileAssign::where('role_id',$role->id)->where('file_id',$file->id)->get()->last();
@@ -72,9 +75,21 @@ class EmployeeController extends Controller
                     return response()->download('storage/'.$file->file);
                 }
             }else{
+                $user=User::whereHas('role',function ($q){
+                    $q->where('name','Admin');
+                })->get();
+                $fileUrl=url(Storage::url($file->file));
+                Notification::send($user,new FileNotification(Auth::user()->name .' has  viewed or downloaded the file.',$fileUrl,Auth::user()));
+
                 abort(403);
             }
         }else{
+            $user=User::whereHas('role',function ($q){
+                $q->where('name','Admin');
+            })->get();
+            $fileUrl=url(Storage::url($file->file));
+            Notification::send($user,new FileNotification(Auth::user()->name .' has  viewed or downloaded the file.',$fileUrl,Auth::user()));
+
             abort(403);
         }
     }
