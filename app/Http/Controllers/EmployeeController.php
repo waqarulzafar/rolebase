@@ -69,7 +69,7 @@ class EmployeeController extends Controller
                 if ($file){
 
 
-                    return response()->file('storage/'.$file->file);
+                    return response()->download('storage/'.$file->file);
                 }
             }else{
                 abort(403);
