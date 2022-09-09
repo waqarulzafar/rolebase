@@ -75,7 +75,7 @@
                                             <table class="table">
                                                 <thead>
                                                     <tr>
-                                                        <td>File Assign</td>
+                                                        <td style="display: none">File Assign</td>
                                                         <th>File Name</th>
                                                         <th>File</th>
                                                         <th>Access Type</th>
