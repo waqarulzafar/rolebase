@@ -84,7 +84,7 @@
                                                 <tbody>
                                                     @foreach($files as $key=>$file)
                                                         <tr>
-                                                            <td><input class="d-none" checked type="checkbox" {{ check_role($role->id,$file->id) }} name="dt[{{$key}}][files]" value="{{ $file->id }}" ></td>
+                                                            <td style="display: none;"><input class="d-none" checked type="checkbox" {{ check_role($role->id,$file->id) }} name="dt[{{$key}}][files]" value="{{ $file->id }}" ></td>
                                                             <td>{{ $file->name }}</td>
                                                             <td><img src="{{ file_type($file->file)}}" height="90px" width="90px"></td>
                                                             <td><select class="form-control" name="dt[{{$key}}][access_type]">
