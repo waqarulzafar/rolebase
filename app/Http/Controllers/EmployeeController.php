@@ -68,6 +68,7 @@ class EmployeeController extends Controller
         $permissions=FileAssign::whereIn('role_id',$role)
             ->where('file_id',$file->id)->get()->last();
 
+        dd($permissions);
         if ($permissions){
             if ($permissions->access_type=='download'|| $permissions->access_type=='both'){
 
