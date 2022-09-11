@@ -63,7 +63,7 @@
                                             <label>Role :</label>
                                             <div class="input-group">
                                                 <input name="role" value="{{ $role->name }}" type="text" readonly class="form-control" placeholder="Role"/>
-                                                <input name="role_id" value="{{ $role->id }}" type="hidden" readonly class="form-control" placeholder="Role"/>
+                                                <input name="role_id" value="{{ $role->id }}" type="hidden" class="form-control" placeholder="Role"/>
                                                 <div class="input-group-append"><span class="input-group-text"><i class="la la-map-marker"></i></span></div>
                                             </div>
                                             <span class="form-text text-muted">Role Name</span>

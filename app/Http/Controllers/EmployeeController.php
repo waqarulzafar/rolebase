@@ -31,7 +31,7 @@ class EmployeeController extends Controller
             ->where('file_id',$file->id)->get()->last();
 
         if ($permissions){
-            if ($permissions->access_type=='view'|| $permissions->access_type=='both'){
+            if ($permissions->access_type=='view' || $permissions->access_type=='both'){
 
                 if ($file){
 
@@ -64,8 +64,9 @@ class EmployeeController extends Controller
 
 
 
-        $role=Auth::user()->roles()->first();
-        $permissions=FileAssign::where('role_id',$role->id)->where('file_id',$file->id)->get()->last();
+        $role=Auth::user()->roles()->pluck('roles.id');
+        $permissions=FileAssign::whereIn('role_id',$role)
+            ->where('file_id',$file->id)->get()->last();
 
         if ($permissions){
             if ($permissions->access_type=='download'|| $permissions->access_type=='both'){
