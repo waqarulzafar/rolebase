@@ -77,4 +77,7 @@ class User extends Authenticatable
         }
         return url('assets/media/users/300_21.jpg');
     }
+    public function department(){
+        return $this->belongsTo(Department::class,'department_id');
+    }
 }

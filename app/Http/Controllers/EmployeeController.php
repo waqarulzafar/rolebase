@@ -26,8 +26,9 @@ class EmployeeController extends Controller
 
         $file=FileManage::find($id);
 
-        $role=Auth::user()->roles()->first();
-        $permissions=FileAssign::where('role_id',$role->id)->where('file_id',$file->id)->get()->last();
+        $role=Auth::user()->roles()->pluck('id');
+        $permissions=FileAssign::whereIn('role_id',$role)
+            ->where('file_id',$file->id)->get()->last();
 
         if ($permissions){
             if ($permissions->access_type=='view'|| $permissions->access_type=='both'){

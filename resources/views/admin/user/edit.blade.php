@@ -104,7 +104,7 @@
                                             <div class="input-group">
                                                 <select name="department_id" class="form-control">
                                                     @foreach(\App\Models\Department::all() as $department)
-                                                        <option value="{{ $department->id }}">{{$department->name}}</option>
+                                                        <option value="{{ $department->id }}" {{ $department->id==$user->department_id?'selected':'' }}>{{$department->name}}</option>
                                                     @endforeach
                                                 </select>
                                                 <div class="input-group-append"><span class="input-group-text"><i class="la la-map-marker"></i></span></div>

@@ -58,8 +58,9 @@
                                 <th>Name</th>
                                 <th>Email</th>
                                 <th>Address</th>
+                                <th>Department</th>
+
                                 <th>Status</th>
-{{--                                <th>Role</th>--}}
 
 
                             </tr>

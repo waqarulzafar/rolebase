@@ -72,6 +72,14 @@ var KTDatatablesAdvancedColumnRendering = function() {
                         return '<a class="text-dark-50 text-hover-primary" href="mailto:' + data + '">' + data + '</a>';
                     },
                 },
+
+                {
+                    title: 'Department',
+                    targets: 3,
+                    render: function(data, type, full, meta) {
+                        return full.department.name;
+                    },
+                },
                 {
                     targets: -1,
                     title: 'Actions',

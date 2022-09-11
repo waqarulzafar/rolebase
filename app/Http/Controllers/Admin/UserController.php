@@ -58,7 +58,7 @@ class UserController extends Controller
 //        $users=User::select('users.id','users.name','email','users.status','address','picture','roles.name as type')
 //            ->join('role_assigs','users.id','=','role_assigs.user_id')
 //            ->join('roles','roles.id','=','role_assigs.role_id');
-        $users = User::with('roles')->get();
+        $users = User::with(['roles','department'])->get();
 
         return DataTables::of($users)->addColumn('is_has_image',function($user){
             if(file_exists('uploads/'.$user->picture)){
