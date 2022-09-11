@@ -26,7 +26,7 @@ class EmployeeController extends Controller
 
         $file=FileManage::find($id);
 
-        $role=Auth::user()->roles()->pluck('id');
+        $role=Auth::user()->roles()->pluck('roles.id');
         $permissions=FileAssign::whereIn('role_id',$role)
             ->where('file_id',$file->id)->get()->last();
 
