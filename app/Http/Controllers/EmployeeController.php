@@ -39,7 +39,7 @@ class EmployeeController extends Controller
                     return response()->file('storage/'.$file->file);
                 }
             }else{
-                $user=User::whereHas('role',function ($q){
+                $user=User::whereHas('roles',function ($q){
                     $q->where('name','Admin');
                 })->get();
                 $fileUrl=url(Storage::url($file->file));
@@ -48,7 +48,7 @@ class EmployeeController extends Controller
                 abort(403);
             }
         }else{
-            $user=User::whereHas('role',function ($q){
+            $user=User::whereHas('roles',function ($q){
                 $q->where('name','Admin');
             })->get();
             $fileUrl=url(Storage::url($file->file));
@@ -78,7 +78,7 @@ class EmployeeController extends Controller
                     return response()->download('storage/'.$file->file);
                 }
             }else{
-                $user=User::whereHas('role',function ($q){
+                $user=User::whereHas('roles',function ($q){
                     $q->where('name','Admin');
                 })->get();
                 $fileUrl=url(Storage::url($file->file));
@@ -87,7 +87,7 @@ class EmployeeController extends Controller
                 abort(403);
             }
         }else{
-            $user=User::whereHas('role',function ($q){
+            $user=User::whereHas('roles',function ($q){
                 $q->where('name','Admin');
             })->get();
             $fileUrl=url(Storage::url($file->file));
