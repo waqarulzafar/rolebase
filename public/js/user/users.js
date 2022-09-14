@@ -77,7 +77,11 @@ var KTDatatablesAdvancedColumnRendering = function() {
                     title: 'Department',
                     targets: 3,
                     render: function(data, type, full, meta) {
-                        return full.department.name;
+                        if(full.department){
+                            return full.department.name;
+                        }
+                        return "--";
+
                     },
                 },
                 {
